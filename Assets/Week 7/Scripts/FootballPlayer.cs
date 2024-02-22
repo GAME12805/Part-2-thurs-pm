@@ -9,10 +9,13 @@ public class FootballPlayer : MonoBehaviour
     SpriteRenderer sr;
     public Color selectedColor;
     public Color unselectedColor;
+    Rigidbody2D rb;
+    public float speed = 500;
 
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
         Selected(false);
     }
 
@@ -31,5 +34,10 @@ public class FootballPlayer : MonoBehaviour
         {
             sr.color = unselectedColor;
         }
+    }
+
+    public void Move(Vector2 direction)
+    {
+        rb.AddForce(direction * speed);
     }
 }
